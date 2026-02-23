@@ -14,6 +14,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 export default defineConfig({
   plugins: [
     vue(),
+    base: '/'，
     vueDevTools(),
     AutoImport({
       resolvers: [
