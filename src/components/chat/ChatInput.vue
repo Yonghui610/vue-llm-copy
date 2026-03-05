@@ -221,14 +221,10 @@ const acceptAttribute = computed(() =>
 );
 
 const placeholder = computed(() =>
-  isSpeechSupported.value
-    ? "输入你的问题，或点击语音输入按钮试试看…"
-    : "输入你的问题…",
+  isSpeechSupported.value ? "输入你的问题，或点击语音输入按钮试试看…" : "输入你的问题…",
 );
 
-const sendDisabled = computed(
-  () => !inputText.value.trim() && attachments.value.length === 0,
-);
+const sendDisabled = computed(() => !inputText.value.trim() && attachments.value.length === 0);
 
 const isSpeechSupported = computed(
   () =>
@@ -267,10 +263,7 @@ const createAttachmentId = () => {
 const truncatePreview = (text = "") => {
   const trimmed = text.trim();
   const body = trimmed.slice(0, MAX_TEXT_PREVIEW);
-  const note =
-    trimmed.length > MAX_TEXT_PREVIEW
-      ? "内容已截断，仅展示前 8000 字符"
-      : "";
+  const note = trimmed.length > MAX_TEXT_PREVIEW ? "内容已截断，仅展示前 8000 字符" : "";
   return { body, note };
 };
 
@@ -368,11 +361,7 @@ const readFileContent = async (file) => {
    * 读取纯文本或结构化文本类型，避免误判导致的编码问题。
    */
 
-  if (
-    type.startsWith("text/") ||
-    type.includes("json") ||
-    /\.(md|txt|csv|json|log)$/i.test(name)
-  ) {
+  if (type.startsWith("text/") || type.includes("json") || /\.(md|txt|csv|json|log)$/i.test(name)) {
     return readAsPlainText(file);
   }
 
@@ -499,8 +488,7 @@ const stopGeneration = () => {
 const ensureRecognition = () => {
   if (!isSpeechSupported.value || recognition.value) return;
 
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const instance = new SpeechRecognition();
   instance.lang = "zh-CN";
   instance.interimResults = true;
@@ -621,7 +609,9 @@ watch(isTyping, (value) => {
   background: var(--color-input-background);
   box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.08);
   resize: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   outline: none;
 }
 

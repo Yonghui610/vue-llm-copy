@@ -26,6 +26,7 @@ import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import { chatStream } from "@/apis/deepseek";
 import AttachmentPreview from "@/components/chat/AttachmentPreview.vue";
 import ChatInput from "@/components/chat/ChatInput.vue";
+import WelcomePanel from "@/components/chat/WelcomePanel.vue";
 import { useSessionStore } from "@/stores/session";
 import assistantAvatar from "@/assets/avatars/assistant.svg";
 import userAvatar from "@/assets/avatars/user.svg";
@@ -236,6 +237,11 @@ onBeforeUnmount(() => {
   flushBuffer();
   removeChatListeners();
 });
+
+const handleWelcomePick = async (text) => {
+  msg.value = text;
+  await submit();
+};
 
 /**
  * 发送消息时处理文本、附件并发起流式请求。
@@ -452,7 +458,12 @@ defineExpose({ selecthistory });
     </el-select>
   </div>
 
+  <div v-if="!messages.length" class="content">
+    <WelcomePanel @select="handleWelcomePick" />
+  </div>
+
   <DynamicScroller
+    v-else
     class="content"
     :items="messages"
     :min-item-size="120"

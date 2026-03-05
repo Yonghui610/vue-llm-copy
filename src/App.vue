@@ -172,6 +172,7 @@ onMounted(() => {
   flex-direction: column;
 
   position: relative;
+  padding-bottom: 12px;
 }
 
 .mobile-overlay {

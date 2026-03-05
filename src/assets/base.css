@@ -10,14 +10,14 @@
 
   --vt-c-indigo: #1e3a8a;
 
-  --color-app-background: #e9edf7;
-  --color-panel: rgba(255, 255, 255, 0.94);
-  --color-panel-alt: rgba(248, 250, 252, 0.96);
-  --color-sidebar-surface: linear-gradient(180deg, rgba(248, 250, 252, 0.96) 0%, rgba(226, 232, 240, 0.92) 100%);
+  --color-app-background: #f7f8fa;
+  --color-panel: #ffffff;
+  --color-panel-alt: #ffffff;
+  --color-sidebar-surface: #f9fafb;
   --color-surface: rgba(255, 255, 255, 0.95);
   --color-elevated-surface: rgba(255, 255, 255, 0.9);
-  --color-border: rgba(148, 163, 184, 0.3);
-  --color-border-strong: rgba(100, 116, 139, 0.35);
+  --color-border: #e5e7eb;
+  --color-border-strong: #e5e7eb;
   --color-heading: #0f172a;
   --color-text-primary: #1e293b;
   --color-text-secondary: #475569;
